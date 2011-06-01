@@ -1,0 +1,62 @@
+{% extends layout %}
+{% block content %}
+
+
+
+<div class="table_header">
+	<h2 class="table_header">{{menu_label}}</h2>
+	<div class="button btn_write"><a href="/write">글 작성<span>Write a new Article</span></a></div>
+</div>
+
+<div class="table_body">
+<table class="entry_list">
+	<thead>
+		<tr>
+			<th>제목</th>
+			<th>글쓴이</th>
+			<th>댓글</th>
+			<th>갱신</th>
+			<th>작성</th>
+		</tr>
+	</thead>
+	
+	<tfoot>
+		<tr>
+			<td colspan="5" class="center">				
+				{% if paging.hasNewerCursor %}
+				<a href="/list/{{menu_identifier}}/{{paging.getNewerCursor}}">« 앞 페이지</a>
+				{% endif %}
+				
+				{% if paging.hasOlderCursor %}
+				<a href="/list/{{menu_identifier}}/{{paging.getOlderCursor}}">다음 페이지 »</a>
+				{% endif %}
+			</td>
+		</tr>
+	</tfoot>
+	
+	<tbody>
+		{% for entry in paging.getResult %}
+		<tr class="{% cycle 'alt_row1' 'alt_row2' %}">
+			<td class="title"><a href="/entry/{{entry.index}}">{{entry.title}}</a></td>
+			<td class="center">{{entry.user.nickname}}</td>
+			<td class="center">{{entry.comment_count}}</td>
+			<td class="center">{{entry.updated_on|timesince}}전</td>
+			<td class="center">{{entry.created_on|timesince}}전</td>
+		</tr>
+		{% empty %}
+		<tr>
+			<td colspan="5" class="center">게시물이 없습니다.</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+		
+</table>
+</div>
+
+<div class="table_footer">
+</div>
+
+
+
+
+{% endblock %}

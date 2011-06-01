@@ -1,0 +1,28 @@
+{% extends layout %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+
+<div class="table_header">
+	<h2 class="table_header">{{menu_label}} 글쓰기</h2>
+</div>
+
+<div class="table_body">
+	<form method="post" action="/write/{{menu_identifier}}">
+	<div><input type="hidden" name="menu_id" value="{{menu_id}}"></div>
+	<div><input type="hidden" name="csrf_token" value="{{csrf_token}}"></div>
+	{% include "form.html" %}
+	<div><input type="submit" value="글쓰기" /></div>
+	
+	</form>
+</div>
+
+<div class="table_footer">
+</div>
+
+
+
+
+{% endblock %}

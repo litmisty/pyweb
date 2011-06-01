@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="table_header">
+	<h2 class="table_header">{% if siteUser %}{{siteUser.nickname}}님의 {% endif %}코멘트 관리</h2>
+</div>
+
+<div class="table_body">
+<table class="entry_list">
+	<thead>
+		<tr>
+			<th>내용</th>
+			<th>글쓴이</th>
+			<th>작성</th>
+			<th>삭제</th>
+		</tr>
+	</thead>
+	
+	<tfoot>
+		<tr>
+			<td colspan="4" class="center">				
+				{% if paging.hasNewerCursor %}
+				<a href="/admin/comment/{{paging.getNewerCursor}}">« 앞 페이지</a>
+				{% endif %}
+				
+				{% if paging.hasOlderCursor %}
+				<a href="/admin/comment/{{paging.getOlderCursor}}">다음 페이지 »</a>
+				{% endif %}
+			</td>
+		</tr>
+	</tfoot>
+	
+	<tbody>
+		{% for comment in paging.getResult %}
+		<tr class="{% cycle 'alt_row1' 'alt_row2' %}">
+			<td class="title">{{comment.content}}</td>
+			<td class="center">{{comment.user.nickname}}</td>
+			<td class="center">{{comment.created_on|date:"Y/m/d H:i"}}</td>
+			<td class="center"><a href="/admin/comment_delete/{{comment.key.id}}"><img src="/public/icons/16/cross.png" alt="삭제" /></a></td>
+		</tr>
+		{% empty %}
+		<tr>
+			<td colspan="4" class="center">코멘트가 없습니다.</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+		
+</table>
+</div>
+
+<div class="table_footer">
+</div>
+
+
+{% endblock %}

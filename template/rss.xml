@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>파이썬 웹개발 커뮤니티</title>
+		<description></description>
+		<link>http://pyweb.appspot.com/</link>
+		<language>ko</language>
+		<copyright>pyweb.appspot.com</copyright>
+		<pubDate></pubDate>
+		<lastBuildDate></lastBuildDate>
+		<ttl></ttl>
+		<atom:link href="http://pyweb.appspot.com/rss" rel="self" type="application/rss+xml" />
+		<image>
+			<title>pyweb</title>
+			<url>http://pyweb.appspot.com/public/images/logo.png</url>
+			<link>http://pyweb.appspot.com/</link>
+			<description></description>
+		</image>
+		
+		{% for entry in paging.getResult %}
+		<item>
+			<title>{{entry.title}}</title>
+			<description>{{entry.content}}</description>
+			<link>http://pyweb.appspot.com/entry/{{entry.index}}</link>
+			<guid isPermaLink="true">http://pyweb.appspot.com/entry/{{entry.index}}</guid>
+			<pubDate>Tue, 04 Dec 2007 09:19:42 CST</pubDate>
+			<source url="http://pyweb.appspot.com/">http://pyweb.appspot.com/</source>
+		</item>
+		{% endfor %}		
+	</channel>
+</rss>

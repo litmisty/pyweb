@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="900px"
+	 height="600px" viewBox="0 0 900 600" enable-background="new 0 0 900 600" xml:space="preserve">
+<g id="Layer_1">
+	<path fill="#B31A2E" stroke="#FFFFFF" stroke-width="10" stroke-miterlimit="10" d="M354.967,382.705
+		c45.953-68.93,27.326-162.06-41.603-208.013c-68.93-45.953-162.06-27.327-208.013,41.603
+		c-34.464,51.697-20.495,121.545,31.203,156.01c51.697,34.465,121.545,20.495,156.01-31.201"/>
+	<path fill="#1A21B3" stroke="#FFFFFF" stroke-width="10" stroke-miterlimit="10" d="M105.351,216.295
+		c-22.977,34.465-13.663,81.03,20.801,104.006c34.465,22.978,81.03,13.664,104.007-20.801
+		c22.977-34.465,69.542-43.778,104.006-20.801c34.465,22.976,43.778,69.542,20.802,104.006
+		c-45.953,68.929-139.083,87.556-208.013,41.603C78.025,378.354,59.399,285.225,105.351,216.295"/>
+	<rect x="65.159" y="133" fill="none" stroke="#487858" stroke-miterlimit="10" stroke-opacity="0" width="778.5" height="334"/>
+	<text transform="matrix(1 0 0 1 454.4092 270.3472)" fill="#0D1159" font-family="'AbadiMT-CondensedExtraBold'" font-size="130">Python</text>
+	<text transform="matrix(1 0 0 1 412.4092 401.2109)" fill="#590D17" font-family="'AbadiMT-CondensedExtraBold'" font-size="130">WEB DEV</text>
+</g>
+<g id="Layer_2">
+	<circle fill="#FFFAFF" cx="158.5" cy="300" r="9.727"/>
+	<circle fill="#FFFAFF" cx="298.227" cy="300" r="9.727"/>
+</g>
+</svg>

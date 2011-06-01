@@ -1,0 +1,49 @@
+{% extends layout %}
+{% block content %}
+
+<div class="table_header">
+	<h2 class="table_header">{{entry.title}}</h2>
+</div>
+
+<div class="table_body">
+	<ul class="author_info">
+		<li class="author">{{entry.user.nickname}}</li>
+		<li class="created_on">{{entry.created_on|timeoffset:9|date:"Y/m/d H:i"}}</li>
+		{% if entry.created_on != entry.updated_on %}
+			<li class="updated_on">{{entry.updated_on|timeoffset:9|date:"Y/m/d H:i"}}</li>
+		{% endif %}
+	</ul>
+	
+	<div class="contents">
+	{{entry.content|bbcode|safe}}
+	</div>
+	
+	{% if entry.link %}
+	<p><img src="/public/icons/16/link.png" alt="Link"/><a href="{{entry.link}}">{{entry.link|cut_string:100}}</a></p>
+	{% endif %}
+	
+</div>
+
+<div class="table_footer">
+</div>
+
+
+{% ifequal entry.user user.get_current_user %}
+<div class="button btn_edit"><a href="/edit/{{entry.index}}">글 수정<span>Modify this Article</span></a></div>
+{% endifequal %}
+
+{% if user.is_current_user_admin %}
+<div class="button btn_delete"><a href="/admin/entry_delete/{{entry.index}}">글 삭제<span>Delete this Article</span></a></div>
+{% endif %}
+
+<br class="clear" />
+
+
+{% include "comment.html" %}
+
+
+
+
+
+
+{% endblock %}

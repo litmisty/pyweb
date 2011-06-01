@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+{% block head %}
+<style>
+	#function_label {
+		width: 150px;
+	}
+</style>
+<script>
+	$(function(){
+		var label_list = Array();
+		label_list['function_show_entry'] = "사용자 작성글 보기";
+		label_list['function_show_comment'] = "사용자 코멘트 보기";
+		label_list['function_block_user'] = "사용자 임시 차단";
+		label_list['function_ban_user'] = "사용자 영구 차단";
+		label_list['normal'] = "기능";
+		
+		$(".function_trigger").hover(
+			function() {
+				$.each( $(this).attr("class").split(/\s+/), function(index, item){
+					if( item == "function_trigger" ) {
+						return;
+					}
+					$("#function_label").html( label_list[item] );	
+				});
+				
+			},
+			function() {
+				$("#function_label").html(label_list['normal']);
+			}
+		);
+	});
+</script>
+{% endblock %}
+
+{% block content %}
+
+<div class="table_header">
+	<h2 class="table_header">사용자 관리</h2>
+</div>
+
+<div class="table_body">
+<form action="/admin/entry_delete_all" method="post">
+<table class="entry_list">
+	<thead>
+		<tr>
+			<th>아이디</th>
+			<th>이메일</th>
+			<th>닉네임</th>
+			<th>상태</th>
+			<th>가입</th>
+			<th id="function_label">기능</th>
+		</tr>
+	</thead>
+	
+	<tfoot>
+		<tr>
+			<td colspan="6" class="center">				
+				{% if paging.hasNewerCursor %}
+				<a href="/admin/user/{{paging.getNewerCursor}}">« 앞 페이지</a>
+				{% endif %}
+				
+				{% if paging.hasOlderCursor %}
+				<a href="/admin/user/{{paging.getOlderCursor}}">다음 페이지 »</a>
+				{% endif %}
+			</td>
+		</tr>
+	</tfoot>
+	
+	<tbody>
+		{% for site_user in paging.getResult %}
+		<tr class="{% cycle 'alt_row1' 'alt_row2' %}">
+			<td class="center">{{site_user.key.id}}</td>
+			<td class="center">{{site_user.email}}</td>
+			<td class="center">{{site_user.nickname}}</td>
+			<td class="center">{{site_user.status|user_status_label}}</td>
+			<td class="center">{{site_user.join_on|timeoffset:9|date:"Y-m-d H:i"}}</td>
+			<td class="center">
+				<a href="/admin/userEntry/entry/{{site_user.key.id}}" class="function_trigger function_show_entry"><img src="/public/icons/16/document_prepare.png" alt="사용자 게시글 보기"/></a>
+				<a href="/admin/userEntry/comment/{{site_user.key.id}}" class="function_trigger function_show_comment"><img src="/public/icons/16/comments.png" alt="사용자 코멘트 보기"/></a>
+				<a href="" class="function_trigger function_block_user"><img src="/public/icons/16/error.png" alt="사용자 임시 차단"/></a>
+				<a href="" class="function_trigger function_ban_user"><img src="/public/icons/16/delete.png" alt="사용자 영구 차단"/></a>
+			</td>
+		</tr>
+		{% empty %}
+		<tr>
+			<td colspan="6" class="center">사용자가 없습니다.</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+		
+</table>
+</form>
+</div>
+
+<div class="table_footer">
+</div>
+
+
+{% endblock %}

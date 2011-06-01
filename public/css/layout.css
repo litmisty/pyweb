@@ -1,0 +1,78 @@
+/**
+ * EFF4F8
+ * 348ABF
+ * 0D6BA6
+ * A0BED9
+ * 6394BF
+ */
+body {
+	font: 13px/1.4em Verdana,sans-serif;
+	background-color: #EFF4F8;
+	color: #666;
+	padding:10px;
+	margin:0px;
+}
+img {
+	border: 0px;
+}
+
+p {
+	line-height: 2em;
+}
+
+#wrapper {
+	margin: 0px auto;	
+	max-width: 1000px;
+	position: relative;
+	min-width: 920px;
+
+	padding: 20px;
+	background-color: #FFF;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	border: 10px solid #348ABF;
+}
+
+#header h1 {
+	position: relative;
+	float: left;
+	margin:0px;
+	margin-right: 20px;
+}
+
+#content {
+	padding: 10px;
+}
+
+
+#menu {
+	margin: 0px;
+	padding:0px;
+	
+}
+
+
+#search {
+	margin-left: 270px;
+	width: 500px;
+	clear: both;
+	text-align: center;
+}
+
+#footer {
+	clear: both;
+	text-align: center;
+	font-size: 0.8em;
+}
+
+.clear {
+	clear: both;
+}
+
+a {
+	color: #991827;
+}
+a:hover {
+	text-decoration: none;
+}

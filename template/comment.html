@@ -1,0 +1,65 @@
+
+<div class="table_header_empty">
+</div>
+
+<div class="table_body">
+
+	{% if entry.comments %}	
+	<ol class="comment">
+		{% for comment in entry.comments %}
+		<li>
+			<ul class="meta">
+				<li class="permalink"><a href="#comment{{comment.key.id}}" name="comment{{comment.key.id}}">permalink</a></li>				
+				<li class="author">{{comment.user.nickname}}</li>
+				<li class="created_on">{{comment.created_on|timesince}}전</li>
+				{% if user.is_current_user_admin %}
+				<li class="delete"><a href="/admin/comment_delete/{{comment.key.id}}">삭제</a></li>
+				{% endif %}				
+			</ul>		
+			<div class="content">
+				{{comment.content|bbcode|safe}}
+			</div>
+			<div class="clear"></div>
+		</li>
+		{% empty %}
+		<li class="empty">
+		</li>
+		{% endfor %}
+	</ol>
+	{% endif %}
+	
+	
+	{% if user.get_current_user %}
+	<form method="post" action="/write_comment/{{entry.index}}">
+	<div><input type="hidden" name="csrf_token" value="{{csrf_token}}"></div>
+	{% for field in comment_form %}
+	<div>       
+	    {{ field }}
+	    {% if field.name == 'content' %}
+	    <ul class="infolist">
+	    	<li>소스 코드는 <img src="/public/icons/highlight.gif" alt="Syntaxhighligher"/>를 클릭하여 입력해 주세요.</li>
+	    </ul>
+	    {% endif %}
+	    
+	    {{ field.errors }}
+	</div>
+	{% endfor %}
+	
+    {% if recaptcha_challenge_code %}
+
+    <div>
+    	<img src="{{recaptcha_challenge_image_url}}}" alt="recaptcha image"/>
+    </div>
+    <div>
+    	
+    </div>
+    {% endif %}
+	
+	<p><input type="submit" value="코멘트"/></p>
+	</form>
+	{% endif %}
+</div>
+
+<div class="table_footer">
+</div>
+

@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<script type="text/javascript">
+$(function(){
+	$("#id_spam").click( function(){
+		if( $(this).attr("checked") ) {
+			$("#spam_info").css('display', '');
+		} else {
+			$("#spam_info").css('display', 'none');
+		}
+	});
+});
+</script>
+{% endblock %}
+
+{% block content %}
+
+<div class="center_box">
+	<div class="message msg_warning"> 게시글 <strong>"{{entry.title}}"</strong> 을 삭제합니다.</div>
+	<form action="/admin/entry_delete/{{entry.index}}" method="post">
+		<div style="width:100px; margin:auto;">
+			<label for="id_spam">스펨</label><input id="id_spam" type="checkbox" name="is_spam" value="1" />
+		</div>
+		<div id="spam_info" style="clear: both; display:none;">	
+			<ul class="infolist">
+				<li>이 유져의 상태는 블록 상태가 됩니다.</li>
+				<li>이 글을 쓴 유져의 코멘트, 게시글이 모두 삭제 됩니다.</li>
+			</ul>
+		</div>
+		<div style="text-align: center; clear:both;"><input type="submit" value="삭제" /></div>
+	</form>
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="table_header">
+	<h2 class="table_header">{% if siteUser %}{{siteUser.nickname}}님의 {% endif %}게시글 관리</h2>
+</div>
+
+<div class="table_body">
+<table class="entry_list">
+	<thead>
+		<tr>
+			<th>제목</th>
+			<th>글쓴이</th>
+			<th>댓글</th>
+			<th>갱신</th>
+			<th>작성</th>
+			<th>삭제</th>
+		</tr>
+	</thead>
+	
+	<tfoot>
+		<tr>
+			<td colspan="6" class="center">				
+				{% if paging.hasNewerCursor %}
+				<a href="/admin/entry/{{paging.getNewerCursor}}">« 앞 페이지</a>
+				{% endif %}
+				
+				{% if paging.hasOlderCursor %}
+				<a href="/admin/entry/{{paging.getOlderCursor}}">다음 페이지 »</a>
+				{% endif %}
+			</td>
+		</tr>
+	</tfoot>
+	
+	<tbody>
+		{% for entry in paging.getResult %}
+		<tr class="{% cycle 'alt_row1' 'alt_row2' %}">
+			<td class="title">{{entry.menu_id|menu_label}} - <a href="/entry/{{entry.index}}">{{entry.title}}</a></td>
+			<td class="center"><a href="/admin/userEntry/entry/{{entry.site_user_id}}">{{entry.user.nickname}}</a></td>
+			<td class="center">{{entry.comment_count}}</td>
+			<td class="center small">{{entry.updated_on|date:"Y/m/d H:i"}}</td>
+			<td class="center small">{{entry.created_on|date:"Y/m/d H:i"}}</td>
+			<td class="center">
+				<a href="/admin/entry_delete/{{entry.index}}"><img src="/public/icons/16/cross.png" alt="삭제"/></a>
+			</td>
+		</tr>
+		{% empty %}
+		<tr>
+			<td colspan="6" class="center">게시물이 없습니다.</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+		
+</table>
+</div>
+
+<div class="table_footer">
+</div>
+
+
+{% endblock %}

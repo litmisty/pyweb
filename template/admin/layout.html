@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>한국 Python 웹 개발 커뮤니티</title>
+	<meta name="author" content="mimu">
+	<meta name="description" content="한국 Python 웹 개발 커뮤니티"  >
+	<meta name="keywords" content="python, django, google app engine, GAE, 구글 앱 엔진"  >
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
+	<link href="/public/css/layout.css" type="text/css" rel="stylesheet">
+	<link href="/public/css/general.css" type="text/css" rel="stylesheet">	
+	<link href="/public/css/admin.css" type="text/css" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="/public/syntaxhighlighter/styles/shCoreDefault.css">
+	
+	<script type="text/javascript" src="/public/syntaxhighlighter/scripts/shCore.js"></script>
+	<script type="text/javascript" src="/public/syntaxhighlighter/scripts/shAutoloader.js"></script>	
+	<script type="text/javascript" src="/public/tiny_mce/jquery.tinymce.js"></script>
+	<script type="text/javascript" src="/public/js/general.js"></script>
+	
+	{% block head %}{% endblock %}
+	
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-22805028-1']);
+	  _gaq.push(['_setDomainName', 'none']);
+	  _gaq.push(['_setAllowLinker', true]);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	
+	</script>
+</head>
+
+<body>
+	<div id="wrapper">	
+		<div id="header">
+			<h1><a href="/"><img src="/public/images/logo.png" alt="django Korea" class="logo" /></a></h1>
+			<ul id="menu">
+				<li class="admin_top"><a href="/admin/">관리 톱페이지 <span>Top page</span></a></li>
+				<li class="admin_user"><a href="/admin/user">사용자 관리 <span>User Administrate</span></a></li>
+				<li class="admin_entry"><a href="/admin/entry">게시글 관리 <span>Entry Administrate</span></a></li>
+				<li class="admin_comment"><a href="/admin/comment">코멘트 관리 <span>Comment Administrate</span></a></li>
+				<li class="logout"><a href="{{auth_url}}">로그아웃<span>Logout</span></a></li>
+			</ul>
+		</div>
+		
+		<div id="content" class="clear">
+		{% block content %}{% endblock %}
+		</div>
+		
+		<div id="footer">&copy 2011 한국 Python 웹 개발 커뮤니티</div>
+	</div>
+</body>
+</html>

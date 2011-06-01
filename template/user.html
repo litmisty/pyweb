@@ -1,0 +1,67 @@
+{% extends layout %}
+{% block content %}
+
+
+
+<div class="table_header">
+	<h2 class="table_header">사용자 정보</h2>
+</div>
+
+<div class="table_body">
+<h3>사용자 정보</h3>
+<ul>	
+	<li>닉네임 : {{user.get_current_user.nickname}}</li>
+	<li>상태 : {{siteUser.status|user_status_label}}</li>
+	<li>가입일 : {{siteUser.join_on|date:"Y/m/d"}}</li>
+</ul>
+
+<h3>작성 글</h3>
+<table class="entry_list">
+	<thead>
+		<tr>
+			<th>제목</th>
+			<th>댓글</th>
+			<th>갱신</th>
+			<th>작성</th>
+		</tr>
+	</thead>
+	
+	<tfoot>
+		<tr>
+			<td colspan="4" class="center">				
+				{% if paging.hasNewerCursor %}
+				<a href="/user/{{paging.getNewerCursor}}">« 앞 페이지</a>
+				{% endif %}
+				
+				{% if paging.hasOlderCursor %}
+				<a href="/user/{{paging.getOlderCursor}}">다음 페이지 »</a>
+				{% endif %}
+			</td>
+		</tr>
+	</tfoot>
+	
+	<tbody>
+		{% for entry in paging.getResult %}
+		<tr class="{% cycle 'alt_row1' 'alt_row2' %}">
+			<td class="title"><a href="/entry/{{entry.index}}">{{entry.title}}</a></td>
+			<td class="center">{{entry.comment_count}}</td>
+			<td class="center">{{entry.updated_on|timesince}}</td>
+			<td class="center">{{entry.created_on|timesince}}</td>
+		</tr>
+		{% empty %}
+		<tr>
+			<td colspan="4" class="center">게시물이 없습니다.</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+		
+</table>
+</div>
+
+<div class="table_footer">
+</div>
+
+
+
+
+{% endblock %}

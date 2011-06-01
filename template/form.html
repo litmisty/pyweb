@@ -1,0 +1,19 @@
+	{% for field in entry_form %}
+    <div>
+        {{ field.label_tag }}
+        {{ field }}
+        {% if field.name == 'content' %}
+        <ul class="infolist">
+        	<li>소스 코드는 <img src="/public/icons/highlight.gif" alt="Syntaxhighligher"/>를 클릭하여 입력해 주세요.</li>
+        	<li>[b][code class="python"][h3]~[h6][img]</li>
+        </ul>
+        {% endif %}
+        
+        {% if field.name == 'title' %}
+        <ul class="infolist">
+        	<li>최대 길이는 100글자 입니다.</li>
+        </ul>
+        {% endif %}
+        {{ field.errors }}
+    </div>
+    {% endfor %}

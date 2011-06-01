@@ -1,0 +1,58 @@
+{% extends layout %}
+{% block content %}
+
+
+<div class="top_intro">
+	<p>Python 웹 개발 커뮤니티에 오신것을 환영합니다.</p>
+	<p>Django, Gooel app engine, Turbogear등 <br/>Python웹 개발 프레임워크의 정보를 공유하기 위한 목적으로 개설되었습니다.</p>
+</div>
+<br class="clear" />
+
+<ul id="write_element">
+	<li class="news">
+		<a href="/list/news">새소식</a>
+		<ul>
+			{% for entry in entries.news %}
+			<li><a href="/entry/{{entry.index}}">{{entry.title|cut_string:34}}</a></li>
+			{% empty %}
+			<li>&lt;게시글이 없습니다&gt;</li>
+			{% endfor %}
+		</ul>
+	</li>
+	
+	<li class="free">
+		<a href="/list/free">자유게시판</a>
+		<ul>
+			{% for entry in entries.free %}
+			<li><a href="/entry/{{entry.index}}">{{entry.title|cut_string:34}}</a></li>
+			{% empty %}
+			<li>&lt;게시글이 없습니다&gt;</li>
+			{% endfor %}
+		</ul>
+	</li>
+	
+	<li class="tips">
+		<a href="/list/tips">팁, 강좌</a>
+		<ul>
+			{% for entry in entries.tips %}
+			<li><a href="/entry/{{entry.index}}">{{entry.title|cut_string:34}}</a></li>
+			{% empty %}
+			<li>&lt;게시글이 없습니다&gt;</li>
+			{% endfor %}
+		</ul>
+	</li>
+	
+	<li class="qna">
+		<a href="/list/qna">질문,답변</a>
+		<ul>
+			{% for entry in entries.qna %}
+			<li><a href="/entry/{{entry.index}}">{{entry.title|cut_string:34}}</a></li>
+			{% empty %}
+			<li>&lt;게시글이 없습니다&gt;</li>
+			{% endfor %}
+
+		</ul>
+	</li>
+</ul>
+
+{% endblock %}

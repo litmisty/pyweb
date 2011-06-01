@@ -1,0 +1,12 @@
+td form div {
+	float: left;
+	height: 15px;
+}
+
+td.form {
+	width: 110px;
+}
+
+td.small {
+	font-size: 0.8em;
+}

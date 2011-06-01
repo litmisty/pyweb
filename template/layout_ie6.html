@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Python 웹 개발 커뮤니티</title>
+	<meta name="author" content="mimu">
+	<meta name="description" content="Python 웹 개발 커뮤니티"  >
+	<meta name="keywords" content="python, django, google app engine, GAE, 구글 앱 엔진"  >
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
+	<link href="/public/css/layout.css" type="text/css" rel="stylesheet">
+	<link href="/public/css/general.css" type="text/css" rel="stylesheet">	
+	<link type="text/css" rel="stylesheet" href="/public/syntaxhighlighter/styles/shCoreDefault.css">
+	
+	<script type="text/javascript" src="/public/syntaxhighlighter/scripts/shCore.js"></script>
+	<script type="text/javascript" src="/public/syntaxhighlighter/scripts/shAutoloader.js"></script>	
+	<script type="text/javascript" src="/public/tiny_mce/jquery.tinymce.js"></script>
+	<script type="text/javascript" src="/public/js/general.js"></script>
+	
+	
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript"> 
+	  google.load('search', '1', {language : 'ko'});
+	  google.setOnLoadCallback(function() {
+	    var customSearchControl = new google.search.CustomSearchControl('016257558482421023355:hxdgv-6tfgc');
+	    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+	    customSearchControl.draw('cse');
+	  }, true);
+	</script>
+	<link rel="stylesheet" href="//www.google.com/cse/style/look/default.css" type="text/css" >
+	
+	{% block head %}{% endblock %}
+	
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-23167534-1']);
+	  _gaq.push(['_setDomainName', 'none']);
+	  _gaq.push(['_setAllowLinker', true]);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>	
+</head>
+
+<body>
+	<div id="wrapper">	
+		<div id="header">
+			<h1><a href="/"><img src="/public/images/logo.png" alt="django Korea" class="logo" /></a></h1>
+			<ul id="menu">
+				<li class="information"><a href="/about">소개하기 <span>About this site</span></a></li>
+				<li class="news"><a href="/list/news">새소식<span>News</span></a></li>
+				<li class="free"><a href="/list/free">자유게시판<span>Freeboard</span></a></li>
+				<li class="tips"><a href="/list/tips">강좌,팁<span>Tips, lectures</span></a></li>
+				<li class="qna"><a href="/list/qna">질문,답변<span>Q&amp;A</span></a></li>
+				{% if user.get_current_user %}
+				<li class="logout"><a href="{{auth_url}}">로그아웃<span>Logout</span></a></li>
+				{% else %}
+				<li class="login"><a href="{{auth_url}}">로그인<span>Login</span></a></li>
+				{% endif %}
+			</ul>
+		</div>
+		
+		<div id="content" class="clear">
+		{% block content %}{% endblock %}
+		</div>
+		
+		<div id="search">
+			<div id="cse" style="width: 100%;">Loading</div>
+		</div>
+		<div id="footer">
+			&copy 2011 한국 Python 웹 개발 커뮤니티<br/>
+			지원되지 않는 브라우저를 사용하고 계십니다. 화면이 정상적으로 표시되지 않을 수 있습니다. <br />
+			아래 링크를 클릭 해 주세요.<br />
+			<!-- SAVE THE DEVELOPERS --> <a href="http://resistan.com/savethedeveloper/" style="display:none; _display:inline-block; position:relative; white-space:nowrap; width:auto; margin:5px 0; padding:7px; border:1px solid #ccc; line-height:normal; text-decoration:none; background:#FFF;"> <span style="display:block; font:18px/18px Arial; color:#000; margin:0; padding:0; letter-spacing:-1px">SAVE THE DEVELOPERS <span style="position:absolute; cursor:pointer; display:block; top:0; right:5px; font:40px/40px 'Arial Black'; color:#000; opacity:0.25; filter:alpha(opacity=25);">&lt;<span style="font:40px/40px 'Arial Black'; color:#F00">!</span>&gt;</span></span> <span style="display:block; font:10px/10px Verdana; color:#F00; margin:0; padding:0; letter-spacing:2px">Upgrade IE 6 Now!</span> </a> <!-- /SAVE THE DEVELOPERS -->
+		</div>
+	</div>
+</body>
+</html>

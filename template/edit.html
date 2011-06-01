@@ -1,0 +1,27 @@
+{% extends layout %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+
+<div class="table_header">
+	<h2 class="table_header">{{menu_label}} 글 수정</h2>
+</div>
+
+<div class="table_body">
+	<form method="post" action="/edit/{{index}}">
+	<div><input type="hidden" name="index" value="{{index}}" /></div>
+	<div><input type="hidden" name="csrf_token" value="{{csrf_token}}"></div>
+	{% include "form.html" %}
+	<div><input type="submit" value="글수정" /></div>	
+	</form>
+</div>
+
+<div class="table_footer">
+</div>
+
+
+
+
+{% endblock %}

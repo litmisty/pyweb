@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+<url>
+  <loc>http://pyweb-ko.appspot.com/</loc>
+  <lastmod>2011-05-06T10:21:46+00:00</lastmod>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>http://pyweb-ko.appspot.com/about</loc>
+  <lastmod>2011-05-06T10:21:46+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://pyweb-ko.appspot.com/list/news</loc>
+  <lastmod>2011-05-06T10:21:46+00:00</lastmod>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>http://pyweb-ko.appspot.com/list/free</loc>
+  <lastmod>2011-05-06T10:21:46+00:00</lastmod>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>http://pyweb-ko.appspot.com/list/tips</loc>
+  <lastmod>2011-05-06T10:21:46+00:00</lastmod>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>http://pyweb-ko.appspot.com/list/qna</loc>
+  <lastmod>2011-05-06T10:21:46+00:00</lastmod>
+  <changefreq>always</changefreq>
+</url>
+</urlset>

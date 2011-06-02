@@ -139,6 +139,7 @@ class RSSHandler(MainHandler):
         paging = Paging( query )
         paging.setLimit( LIST_NUMS )
         paging.execute()
+        
     
         self.context['paging'] = paging
                 

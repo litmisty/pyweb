@@ -145,6 +145,26 @@ class RSSHandler(MainHandler):
                 
         self.render( "rss.xml" )
 
+class SitemapHandler(MainHandler):
+    def get(self, menu_identifier=None):
+
+        LIST_NUMS = 10
+            
+        query = Entry.all()
+        query.filter("is_removed", False)
+        query.order("-created_on")
+        
+        paging = Paging( query )
+        paging.setLimit( LIST_NUMS )
+        paging.execute()
+        
+    
+        self.context['paging'] = paging
+        self.response.headers['Content-Type'] = "application/xml"
+        from google.appengine.ext.webapp import template
+        path = os.path.join( os.path.dirname(__file__), '../template/sitemap.xml' )
+        self.response.out.write( template.render( path, self.context ) )        
+
 
 class ViewHandler(MainHandler):
     def get(self, index):
@@ -405,4 +425,5 @@ EntryPath = [('/test/?', TestHandler),
              ('/user/?', UserHandler),
              ('/user/(.*?)/?', UserHandler),
              ('/rss/?', RSSHandler),
+             ('/sitemap/?', SitemapHandler),
             ];

@@ -13,7 +13,8 @@
 #    GNU General Public License for more details.
 #
 #    You should have received a copy of the GNU General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.from google.appengine.ext import webapp 
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+from google.appengine.ext import webapp 
 register = webapp.template.create_template_register()
 
 from models.MenuModel import Menu
